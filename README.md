@@ -1,24 +1,25 @@
 # Calculate priority of the activities
 --------
-This project was born after readning the comments in [this post] (https://news.ycombinator.com/item?id=15686211) of HackerNews
-This application writes a file with a list of the activites and their priority (numeric index: 1 highest priority, 2 less prioritary, etc)
+This project was born after readning the comments in [this post](https://news.ycombinator.com/item?id=15686211) of HackerNews.
+This application writes a file with a list of the activites and their priority (numeric index: 1 highest priority, 2 less prioritary, etc).
 In detail:
 * The application reads two existing files
 ** activity-date.csv (Activity,Start,End) about the duration of an activity
-** activity-importance.csv (Activity,Importance) about the importance of an activity. The meaning of importance is relative and vague. A definition can be: if you have two activites A and B in the same time, A i more important of B if doing A you can earng more money (or, lose less money) than doing B.
+** activity-importance.csv (Activity,Importance) about the importance of an activity. The meaning of importance is relative and vague. A definition can be: if you have two activites A and B in the same time, A is more important of B if doing A you can earn more money (or, lose less money) than doing B.
 * The application writes one file ordered-activities.csv (Activity, Priority)
 
 
 ## Feature
 
 * The input files can have a different order of the activities each other (now the order has to be the same, otherwise an Exception will be run)
-* Organize the structure following the guidelines in [The Hitchhiker's Guide to Python!] (https://docs.python-guide.org/)
 * The final list can be separated in "activities already started" (start date minor than today) and "future activities" (start date major than today)
 * The final list can be separated by the area of interest of the project (Area of responsability in GTD meaning)
 
 ## Bug
+
 * Fix the unit test
 * Resolve the TODO in the code
+* Organize the structure following the guidelines in [The Hitchhiker's Guide to Python!](https://docs.python-guide.org/)
 
 ## Status CI Integration
  
@@ -38,9 +39,9 @@ In detail:
 - Clone the project with _git-clone_ (or download directly it)
 - Have fun!
 
-
 ## Running the tests
-- In this version the uni test are inside the module and are not completed
+
+- In this version the unit test are inside the module and are not completed. TDD, sorry -__- 
 
 ### Break down into to end to end tests
 
@@ -48,7 +49,7 @@ No indications
 
 ### Coding styles sheets
 
-Please read the file [CONTRIBUTING.md](http://github.com/alepuzio/calculate-priority-activities/CONTRIBUTING.md)
+Please read the file [CONTRIBUTING.md](https://github.com/alepuzio/calculate-priority-activities/blob/master/CONTRIBUTING.md)
 
 ## Deployment
  
@@ -62,7 +63,7 @@ Please read the file [CONTRIBUTING.md](http://github.com/alepuzio/calculate-prio
 
 ## Contributing
 
-Please read the [Contributing.md](http://github.com/alepuzio/calculate-priority-activities/CONTRIBUTING.md) for the details about the code of conduct and the process for submitting pull requests.
+Please read the [CONTRIBUTING.md](https://github.com/alepuzio/calculate-priority-activities/blob/master/CONTRIBUTING.md) for the details about the code of conduct and the process for submitting pull requests.
 
 ## Versioning
 
