@@ -14,18 +14,35 @@ class NumberDays:
     """
     It calculate the remain number of days of an activity
     """
-    def __init__(self, newStart, newEnd):
-        self.start = newStart
-        self.end = newEnd
+    def __init__(self, newStartDate, newEndDate):
+        self.start = newStartDate
+        self.end = newEndDate
 
     def days(self):
-        return (self.end - self.start).days +1
+        return (self.end - self.start ).days +1
 
     def correct(self):
         """
         @return true if the end field is before the start field
         """
-        return (self.end > self.start)
+        return ( self.end > self.start )
+
+
+class TestNumberDays(unittest.TestCase):
+
+    def test_days(self):
+        one = datetime(2009, 12, 2, 10, 24, 34, 198130)
+        two = datetime(2019, 10, 5, 10, 24, 34, 198130)
+        result = NumberDays(one ,two).days()
+        expected = 3595
+        self.assertEqual( result , expected)
+
+    def test_correct(self):
+        one = datetime(2009, 12, 2, 10, 24, 34, 198130)
+        two = datetime(2019, 10, 5, 10, 24, 34, 198130)
+        result = NumberDays(one, two).correct()
+        self.assertTrue( result )
+
 
 class TimeActivity:
 
@@ -43,6 +60,8 @@ class TimeActivity:
 
     def end(self):
         pass
+
+
 class Running(TimeActivity):
     """
     base case
@@ -52,8 +71,8 @@ class Running(TimeActivity):
         
     def days(self):
         res = 0
-        start = NumberDays(self.dayActivity.start(), datetime.date.today() )
-        end  = NumberDays(  datetime.date.today() , self.dayActivity.end() )
+        start = NumberDays( self.dayActivity.start(), date.today() )
+        end  = NumberDays(  date.today() , self.dayActivity.end() )
         if start.correct()  & end.correct():
             res = end.days()
         else:
@@ -90,10 +109,9 @@ class Late(TimeActivity):
     def __repr__(self):
         return "Late:[{0}]".format(self.timeActivity)
 
-class ToStart(TimeActivity):
     """
+    class ToStart(TimeActivity)
     Activity with future begin
-    """
     def __init__(self, newTimeActivity):
         self.timeActivity = newTimeActivity
         
@@ -114,7 +132,7 @@ class ToStart(TimeActivity):
         return "ToStart:[{0}]".format(self.timeActivity)
 
 
-
+    """
 
 class DayActivity:
     """
@@ -151,7 +169,8 @@ class GroupTime:
         result = []
         for row in reader:
             tmp = CSVTime(row)
-            result.append ( ToStart ( Late ( Running ( DayActivity( RowTime ( tmp.activity(), tmp.start(), tmp.end() ) ) ) )) )
+            #result.append ( ToStart ( Late ( Running ( DayActivity( RowTime ( tmp.activity(), tmp.start(), tmp.end() ) ) ) )) )
+            result.append ( Running ( DayActivity( RowTime ( tmp.activity(), tmp.start(), tmp.end() ) ) ) )
         return result
 
 
