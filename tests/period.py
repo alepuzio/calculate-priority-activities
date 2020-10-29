@@ -3,6 +3,7 @@
 Object about the management of the date
 """
 
+from personalLogging import PersonalLogging
 from timeActivity import CSVTime
 from timeActivity import RowTime
 from datetime import date
@@ -16,6 +17,8 @@ class NumberDays:
     """
     def __init__(self, newStartDate, newEndDate):
         self.start = newStartDate
+        self.log = PersonalLogging()
+        self.log.warning ( "NumberDays","init", "start {0}".format ( str ( newStartDate ) ) )
         self.end = newEndDate
 
     def days(self):
@@ -25,8 +28,12 @@ class NumberDays:
         """
         @return true if the end field is before the start field
         """
+        self.log.warning ( "NumberDays","days", "end {0}".format (str ( self.end ) ) )
+        self.log.warning ( "NumberDays","days", "start {0}".format (str ( self.start ) ) )
         return ( self.end > self.start )
 
+    def __repr__(self):
+        return "NumberDays[{0}-{1}]".format ( str ( self.start ) , str ( self.end ) )
 
 class TestNumberDays(unittest.TestCase):
 
@@ -68,10 +75,13 @@ class Running(TimeActivity):
     """
     def __init__(self, newDayActivity):
         self.dayActivity = newDayActivity
-        
+        self.log = PersonalLogging()
+        self.log.warning ( "Running", "init", "start:" + str ( self.dayActivity ) )
+
     def days(self):
         res = 0
-        start = NumberDays( self.dayActivity.start(), date.today() )
+        start = NumberDays( self.dayActivity.begin(), date.today() )
+        self.log.warning ( "Running", "days", "start:" + str ( start ) )
         end  = NumberDays(  date.today() , self.dayActivity.end() )
         if start.correct()  & end.correct():
             res = end.days()
@@ -85,11 +95,9 @@ class Running(TimeActivity):
 
     def __repr__(self):
         return "Running:[{0}]".format(self.dayActivity)
-
-class Late(TimeActivity):
     """
+    class Late(TimeActivity):
     Activity with past end
-    """
     def __init__(self, newTimeActivity):
         self.timeActivity = newTimeActivity
         
@@ -108,8 +116,6 @@ class Late(TimeActivity):
 
     def __repr__(self):
         return "Late:[{0}]".format(self.timeActivity)
-
-    """
     class ToStart(TimeActivity)
     Activity with future begin
     def __init__(self, newTimeActivity):
@@ -140,8 +146,10 @@ class DayActivity:
     """
     def __init__(self, newRowTime):
         self.rowTime = newRowTime
-        
-    def start(self):        
+        self.log = PersonalLogging()
+
+    def start1(self):    
+        self.log.warning ( "DayActivity" , "start", "{0}".format ( str ( self.rowTime.start ) ) )  
         return self.ddmmyyyy(self.rowTime.start)
 
     def end1(self):
@@ -156,6 +164,8 @@ class DayActivity:
         """
         return datetime.strptime(dateAsString, "%d/%m/%Y").date()
 
+    def __repr__(self):
+        return "DayActivity:{0}".format (self.rowTime )
     
 
 class GroupTime:
@@ -170,7 +180,7 @@ class GroupTime:
         for row in reader:
             tmp = CSVTime(row)
             #result.append ( ToStart ( Late ( Running ( DayActivity( RowTime ( tmp.activity(), tmp.start(), tmp.end() ) ) ) )) )
-            result.append ( Running ( DayActivity( RowTime ( tmp.activity(), tmp.start(), tmp.end() ) ) ) )
+            result.append ( Running ( DayActivity ( RowTime ( tmp.activity(), tmp.start(), tmp.end() ) ) ) )
         return result
 
 

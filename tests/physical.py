@@ -25,7 +25,7 @@ class SourceCSV:
                 result = self.groupTime.rows ( csv.DictReader ( csvfile ) )
         else:
             raise Exception ("The file [{0}] is not present, I stop the elaboration ".format (  completePath.path()    )       )
-        self.log.info( "Elaborated file: {0}".format(  completePath.path() ) )
+        self.log.info("SourceCSV", "file", "Elaborated file: {0}".format(  completePath.path() ) )
         return result
 
 class CompletePath:#TODO create decorator cache
@@ -76,7 +76,7 @@ class FinalCSV:
                 tmp = self.groupPriority.rows()[i]
                 self.log.info ( "data {0},{1}".format( tmp.activity(),  tmp.points() ) )
                 writer.writerow({'Activity': tmp.activity(), 'Points': tmp.points()})
-        self.log.info("Elaborated file: {0}".format( completePath.path() )     )
+        self.log.info("FinalCSV", "file", "Elaborated file: {0}".format ( completePath.path() ) )
  
 class Safe:
     def __init__(self, newFinalCSV):

@@ -4,6 +4,7 @@ Object about the management of the data about the project and time
 """
 from datetime import date
 from datetime import datetime
+from personalLogging import PersonalLogging
 import unittest
 
 class CSVTime:
@@ -29,6 +30,9 @@ class RowTime:
         self.activity = newActivity
         self.start = newStart
         self.end = newEnd
+        self.log = PersonalLogging()
+        self.log.warning ("Rowtime","init","start:{0}".format ( str ( self.start)  ) ) 
+        self.log.warning ("Rowtime","init","end:{0}".format ( str ( self.end)  ) ) 
     
     def __repr__(self):
         return "RowTime:{0}[{1}-{2}]".format(self.activity, self.start, self.end)

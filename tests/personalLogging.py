@@ -11,13 +11,24 @@ class PersonalLogging:
         logging.config.fileConfig("config-log.ini", disable_existing_loggers=False)
         self.logger = logging.getLogger(__name__)
         
-    def info(self, msg):
-        return self.logger.info(msg)
+    def info(self, nameclass, method, msg):
+        if msg is None:
+            return self.logger.info( "'{0}'.'{1}': none".format (nameclass, method) )
+        else:
+            return self.logger.info( "'{0}'.'{1}': '{2}'".format( nameclass, method, msg))
 
-    def warning(self, msg):
-        return self.logger.warning(msg)
+    def warning(self, nameclass, method, msg):
+        if msg is None:
+            return self.logger.warning( "'{0}'.'{1}': none".format (nameclass, method) )
+        else:
+            return self.logger.warning( "'{0}'.'{1}': '{2}'".format( nameclass, method, msg))
 
-    def debug(self, msg):
-        return self.logger.debug(msg)
+    def debug(self, nameclass, method, msg): 
+        if msg is None:
+            return self.logger.debug ( "'{0}'.'{1}': none".format (nameclass, method) )
+        else:
+            return self.logger.debug ( "'{0}'.'{1}': '{2}'".format( nameclass, method, msg))
+
+
         
         

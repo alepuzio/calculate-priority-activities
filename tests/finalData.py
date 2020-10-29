@@ -3,8 +3,8 @@
 Object about the management of the data about the project and priority
 """
 import unittest
-from period import Late
-from period import ToStart
+#from period import Late
+#from period import ToStart
 from period import Running
 
 
@@ -83,7 +83,8 @@ class GroupPriority:
             date = self.listPriority.rows()[i]
             importance = listImportance[i]
             if date.action() == importance.activity():
-                result.append ( CSV(Priority( ToStart ( Late ( Running ( date ) ) ), importance) ))
+                #result.append ( CSV(Priority( ToStart ( Late ( Running ( date ) ) ), importance) ))
+                result.append ( CSV ( Priority ( Running ( date ) , importance) ) )
             else:
                 raise Exception("Different project in row {0}:{1}-{2};".format( str(i) , date.action(), importance.activity() ) )
         return GroupPriority(result)        
