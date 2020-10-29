@@ -55,7 +55,14 @@ class Running(TimeActivity):
 
     def __repr__(self):
         return "Running:[{0}]".format(self.dayActivity)
-
+    
+    def oper(self):
+        start = NumberDays( self.dayActivity.start1(), date.today() )
+        self.log.warning ( "Running", "days", "start:" + str ( start ) )
+        end  = NumberDays(  date.today() , self.dayActivity.end1() )
+        if start.correct()  and  end.correct():
+            res = end.days()
+        elif  
 
 
 class Late(TimeActivity):
