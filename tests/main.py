@@ -4,7 +4,7 @@
 """
 
 from importance import GroupImportance
-from timeActivity import GroupTime
+from period import GroupTime
 from timeActivity import GroupActivity
 from finalData import GroupPriority
 
