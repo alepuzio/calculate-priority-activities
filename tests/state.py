@@ -2,16 +2,15 @@ import unittest
 from datetime import date
 from datetime import datetime
 from personalLogging import PersonalLogging
+from numberdays import NumberDays
 
 class State:
 
         """
         It calculate the state of an activity
         """
-        def __init__(self, newName, newStartDate, newEndDate):
-            self.name = newName
-            self.start = newStartDate
-            self.end = newEndDate
+        def __init__(self, newNumberDays):
+            self.numberDays = newNumberDays
             self.log = PersonalLogging()
 
         def activity(self):
@@ -20,41 +19,44 @@ class State:
         def state(self):
             res = None
             today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)  #TODO centralize ina classe
-            if (today - self.start).days < 0:
-                res = "future"
-            elif (self.start - today).days <0 and (today - self.end).days < 0 :
+            #TODO centralize logic or use decorator
+            if self.numberDays.running(today) :#running
                 res = "running"
-            elif (self.end - today).days < 0:
+            elif self.numberDays.future(today):#future
+                res = "future"
+            elif self.numberDays.late(today): #late
                 res = "late"
             else:
-                raise Exception ("Unkown state of the temporal range [{0}-{1}]".format (self.start, self.end) )
+                raise Exception ("Unkown state of the temporal range [{0}-{1}]".format (self.numberDays) )
             return res 
 
         def __repr__(self):
-            return "State[{0}-{1}]".format ( self.start, self.end )
+            return "State({0})".format ( self.numberDays )
         
         def __str__(self):
-            return "State:[{0}-{1}]".format ( self.start, self.end )
+            return "State:[{0}-{1}]".format ( self.numberDays )
+
+
 
 class TestState(unittest.TestCase):
 
     def test_state_future(self):
-        start = datetime(2022, 12, 2, 10, 24, 34, 198130)
-        end = datetime(2029, 12, 2, 10, 24, 34, 198130)
-        result = State("activity-future", start, end).state()
+        start = datetime ( 2022, 12, 2, 10, 24, 34, 198130 )
+        end = datetime ( 2029, 12, 2, 10, 24, 34, 198130 ) 
+        result = State ( NumberDays( "activity-future", start, end ) ).state()
         expected = "future"
-        self.assertEqual( result, expected)
+        self.assertEqual( result, expected ) 
 
     def test_state_running(self):
-        start = datetime(2019, 12, 2, 10, 24, 34, 198130)
-        end = datetime(2029, 12, 2, 10, 24, 34, 198130)
-        result = State("activity-running", start, end).state()
+        start = datetime ( 2019, 12, 2, 10, 24, 34, 198130 )
+        end = datetime ( 2029, 12, 2, 10, 24, 34, 198130 )
+        result = State ( NumberDays ( "activity-running", start, end ) ) .state()
         expected = "running"
-        self.assertEqual( result, expected)
+        self.assertEqual( result, expected )
     
     def test_state_late ( self ) :
-        start = datetime(2019, 12, 2, 10, 24, 34, 198130)
-        end = datetime(2019, 12, 5, 10, 24, 34, 198130)
-        result = State("activity-late", start, end).state()
+        start = datetime ( 2019, 12, 2, 10, 24, 34, 198130 )
+        end = datetime ( 2019, 12, 5, 10, 24, 34, 198130 ) 
+        result = State ( NumberDays ( "activity-late", start, end  ) ).state()
         expected = "late"
         self.assertEqual( result, expected)
