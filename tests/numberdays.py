@@ -4,7 +4,6 @@ Object about the management of the date
 """
 
 from personalLogging import PersonalLogging
-from state import State
 from datetime import date
 from datetime import datetime
 import unittest
@@ -14,48 +13,70 @@ class NumberDays:
     """
     It calculate the remain number of days of an activity
     """
-    def __init__(self, newState):
-        self.state = newState
+    def __init__(self, newName, newStartDate, newEndDate):
+        self.name = newName
+        self.start = newStartDate
+        self.end = newEndDate
+        self.log = PersonalLogging()
 
     def days(self):
+        res = None
         today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)  #TODO centralize ina classe
-        if "future" == self.state.state():
-            res = self.number( today, self.state.start )
-        elif "late" == self.state.state():
-            res = self.number( self.state.end, today )
-        elif "running" == self.state.state():
-            res = self.number( today, self.state.end )
+        if self.number(today, self.start) < 0 and self.number(today, self.end) > 0 :#running
+            res = self.number( today , self.end )
+        elif self.number(today, self.start) > 0:#future
+            res = self.number( today , self.start )
+        elif self.number( self.end , today) > 0: #late
+            res = self.number( self.end, today )
         else:
-            raise Exception("Unkown state [{0}]".format (  self.state.state() ) )
-        return res
+            raise Exception ("Activity[{0}] has unkown temporal range [{1}-{2}]".format (self.name, self.start, self.end) )
+        return res 
 
+    
     def number(self, one, two):
         """
         return the number of days between two dates : if the one and two parames are equals, the result is 1
         """
-        return (two - one).days +1
+        return (two - one).days
 
-    def activity1(self):
-        return self.state.activity()
+    def activity ( self ) : 
+        return self.name()
 
     def __repr__(self):
-        return "NumberDays[{0}]".format ( str ( self.state ) ) 
+        return "NumberDays({0},{1},{2})".format ( self.name, self.start, self.end )
+        
+    def __str__(self):
+        return "NumberDays[{0}]-[{1}-{2}]".format ( self.name, self.start, self.end )
+
 
 class TestNumberDays(unittest.TestCase):
 
+    def test_number_same_day(self):
+        one = datetime(2020, 10, 30, 10, 24, 34, 198130)
+        two = datetime(2020, 10, 30, 10, 24, 34, 198130)
+        result = NumberDays("number", one, two).number(one, two)
+        expected = 0
+        self.assertEqual( result , expected)
+    
+    def test_number_different_days(self):    
+        one = datetime(2020, 10, 29, 10, 24, 34, 198130)
+        two = datetime(2020, 10, 30, 10, 24, 34, 198130)
+        result = NumberDays("number", one, two).number(one, two)
+        expected = 1
+        self.assertEqual( result , expected)
+    
     def test_days_running(self):
-        one = datetime(2009, 12, 2, 10, 24, 34, 198130)
-        two = datetime(2021, 10, 5, 10, 24, 34, 198130)
-        state = State(one, two)
-        result = NumberDays(state).days()
-        expected = 341
+        one = datetime(2020, 10, 29, 10, 24, 34, 198130)
+        two = datetime(2020, 10, 31, 10, 24, 34, 198130)
+        result = NumberDays("activity-running", one, two).days()
+        expected = 1
         self.assertEqual( result , expected)
 
     def test_days_future(self):
         one = datetime(2023, 12, 2, 10, 24, 34, 198130)
         two = datetime(2024, 10, 5, 10, 24, 34, 198130)
-        result = NumberDays( State (one, two)).days()
-        expected = 1129
+        result = NumberDays( "activity-future", one, two ).days()
+        expected = 1128
         self.assertEqual( result , expected)
 
 
