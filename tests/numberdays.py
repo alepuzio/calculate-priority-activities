@@ -22,17 +22,27 @@ class NumberDays:
     def days(self):
         res = None
         today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)  #TODO centralize ina classe
-        if self.number(today, self.start) < 0 and self.number(today, self.end) > 0 :#running
+        if self.running(today) :#running
             res = self.number( today , self.end )
-        elif self.number(today, self.start) > 0:#future
+        elif self.future( today ) > 0:#future
             res = self.number( today , self.start )
-        elif self.number( self.end , today) > 0: #late
+        elif self.late(today): #late
             res = self.number( self.end, today )
         else:
             raise Exception ("Activity[{0}] has unkown temporal range [{1}-{2}]".format (self.name, self.start, self.end) )
         return res 
 
+
+    def running (self, today):
+        return self.number(today, self.start) < 0 and self.number(today, self.end) > 0 
+
+    def future ( self, today ):
+        return self.number(today, self.start) > 0
     
+    def late ( self, today ) :
+        return self.number( self.end , today) > 0
+
+
     def number(self, one, two):
         """
         return the number of days between two dates : if the one and two parames are equals, the result is 1
