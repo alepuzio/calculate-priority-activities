@@ -4,8 +4,6 @@ Object about the management of the date
 """
 
 from personalLogging import PersonalLogging
-from csvtime import CSVTime
-from rowtime import RowTime
 from state import State
 from datetime import date
 from datetime import datetime
@@ -18,7 +16,6 @@ class NumberDays:
     """
     def __init__(self, newState):
         self.state = newState
-        #self.log = PersonalLogging()
 
     def days(self):
         today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)  #TODO centralize ina classe
@@ -34,9 +31,12 @@ class NumberDays:
 
     def number(self, one, two):
         """
-
+        return the number of days between two dates : if the one and two parames are equals, the result is 1
         """
         return (two - one).days +1
+
+    def activity1(self):
+        return self.state.activity()
 
     def __repr__(self):
         return "NumberDays[{0}]".format ( str ( self.state ) ) 

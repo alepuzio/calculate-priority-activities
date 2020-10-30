@@ -22,73 +22,43 @@ class TimeActivity:
 
     def action(self):
         pass
-    """
-    def start(self):
-        pass
-
-    def end(self):
-        pass
-    """
 
 class Running(TimeActivity):
     """
     base case
     """
-    def __init__(self, newDayActivity):
-        self.dayActivity = newDayActivity
+    def __init__(self, newNumberDays):
+        self.numberDays = newNumberDays
         self.log = PersonalLogging()
-        self.log.debug ( "Running", "init", "start:" + str ( self.dayActivity ) )
+        self.log.debug ( "Running", "init", "start:" + str ( self.numberDays ) )
 
     def days(self):
-        res = 0
-        start = NumberDays( self.dayActivity.start1(), date.today() )
-        self.log.warning ( "Running", "days", "start:" + str ( start ) )
-        end  = NumberDays(  date.today() , self.dayActivity.end1() )
-        if start.correct()  and  end.correct():
-            res = end.days()
-        else:
-            raise Exception ("Uncorrect temporal range for project [{0}]".format ( self.dayActivity ) )
-        return res
+        return self.numberDays.days()
  
     def action(self):
-        return self.dayActivity.action()
+        return self.numberDays.activity1()
 
     def __repr__(self):
-        return "Running:[{0}]".format(self.dayActivity)
+        return "Running:[{0}]".format( self.numberDays )
     
-    def oper(self):
-        start = NumberDays( self.dayActivity.start1(), date.today() )
-        self.log.warning ( "Running", "days", "start:" + str ( start ) )
-        end  = NumberDays(  date.today() , self.dayActivity.end1() )
-        if start.correct()  and  end.correct():
-            res = end.days()
-        elif  
-
 
 class Late(TimeActivity):
     """
     case of past activtiy not yet done
     """
-    def __init__(self, newTimeActivity):
+    def __init__(self, newTimeActivity ):
         self.timeActivity = newTimeActivity
         self.log = PersonalLogging()
         self.log.debug ( "Late", "init", "start:" + str ( self.timeActivity ) )
 
     def days(self):
-        res = 0
-        days = NumberDays( self.timeActivity.end1(), date.today() )
-        self.log.warning ( "Late", "days", "start:" + str ( start ) )
-        if days.correct():
-            res = days.days()
-        else:
-            raise Exception ("Uncorrect temporal range for project [{0}]".format ( self.timeActivity ) )
-        return res
+        return self.timeActivity.days()
  
     def action(self):
         return self.timeActivity.action()
-
+    
     def __repr__(self):
-        return "Late:[{0}]".format(self.timeActivity)
+        return "Late:[{0}]".format( self.timeActivity )
 
 
 

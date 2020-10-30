@@ -11,6 +11,8 @@ from running import Running
 from dayactivity import DayActivity
 from datetime import date
 from datetime import datetime
+from state import State
+from numberdays import NumberDays
 import unittest
 
 
@@ -26,7 +28,7 @@ class GroupTime:
         result = []
         for row in reader:
             tmp = CSVTime(row)
-            #result.append ( ToStart ( Late ( Running ( DayActivity( RowTime ( tmp.activity(), tmp.start(), tmp.end() ) ) ) )) )
-            result.append ( Late ( Running ( DayActivity ( RowTime ( tmp.activity(), tmp.start(), tmp.end() ) ) ) ) )
+            day =  DayActivity ( RowTime ( tmp.activity(), tmp.start(), tmp.end() ) ) 
+            result.append ( Late ( Running ( NumberDays ( State ( day.action() , day.start1(), day.end1()  ) ) ) ))
         return result
 
