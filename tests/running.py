@@ -27,19 +27,19 @@ class Running(TimeActivity):
     """
     base case
     """
-    def __init__(self, newNumberDays):
-        self.numberDays = newNumberDays
+    def __init__(self, newState ):
+        self.state = newState
         self.log = PersonalLogging()
-        self.log.debug ( "Running", "init", "start:" + str ( self.numberDays ) )
+        self.log.debug ( "Running", "init", "state:" + str ( self.state ) )
 
     def days(self):
-        return self.numberDays.days()
+        return self.state.numberDays.days()
  
     def action(self):
-        return self.numberDays.activity1()
+        return self.state.activity()
 
     def __repr__(self):
-        return "Running:[{0}]".format( self.numberDays )
+        return "Running:[{0}]".format( self.state )
     
 
 class Late(TimeActivity):

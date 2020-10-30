@@ -33,7 +33,8 @@ class DayActivity:
         """
         @return object date
         """
-        return datetime.strptime(dateAsString, "%d/%m/%Y").date()
+        #return datetime.strptime(dateAsString, "%d/%m/%Y").date().replace(hour=0, minute=0, second=0, microsecond=0 )
+        return datetime.strptime(dateAsString, "%d/%m/%Y").replace(hour=0, minute=0, second=0, microsecond=0 )
 
     def __repr__(self):
         return "DayActivity:{0}-{1}:{2}".format (self.rowTime, self.start1(), self.end1() )

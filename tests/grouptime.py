@@ -29,6 +29,6 @@ class GroupTime:
         for row in reader:
             tmp = CSVTime(row)
             day =  DayActivity ( RowTime ( tmp.activity(), tmp.start(), tmp.end() ) ) 
-            result.append ( Late ( Running ( NumberDays ( State ( day.action() , day.start1(), day.end1()  ) ) ) ))
+            result.append ( Late ( Running ( State ( NumberDays ( day.action() , day.start1(), day.end1()  ) ) ) ) ) 
         return result
 

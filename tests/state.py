@@ -14,7 +14,7 @@ class State:
             self.log = PersonalLogging()
 
         def activity(self):
-            return self.name
+            return self.numberDays.name
 
         def state(self):
             res = None
@@ -27,14 +27,14 @@ class State:
             elif self.numberDays.late(today): #late
                 res = "late"
             else:
-                raise Exception ("Unkown state of the temporal range [{0}-{1}]".format (self.numberDays) )
+                raise Exception ("Unkown state of the temporal range [{0}]".format (self.numberDays) )
             return res 
 
         def __repr__(self):
             return "State({0})".format ( self.numberDays )
         
         def __str__(self):
-            return "State:[{0}-{1}]".format ( self.numberDays )
+            return "State: {0}".format ( self.numberDays )
 
 
 
