@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Module timeActivity
+"""Module csvtime
 Object about the management of the data about the project and time
 """
 from datetime import date
@@ -24,3 +24,7 @@ class CSVTime:
     def __repr__(self):
         return "CSVTime[{0}]\n>>>[{1}]\n>>>>>>>>>>[{2}]]".format(self.Activity(), self.start(), self.end())
 
+
+"""
+TestCSVTime: the class under test required an external CSV, than the unit is not isolated, then no unit test
+"""
