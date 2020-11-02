@@ -3,4 +3,5 @@ python: 3.8.6
 install:
   - pip install -r requirements.txt
   - pip install .
+# put testing framework
 script: pytest
