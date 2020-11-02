@@ -6,3 +6,9 @@ install:
   - pip install -r requirements.txt
 # put testing framework
 script: pytest
+# allowed only these branch
+branches:
+  only:
+  - master
+  - develop
+  - join-travis
