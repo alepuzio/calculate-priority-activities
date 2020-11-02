@@ -26,7 +26,6 @@ class CompletePath:#TODO create decorator cache
 
 """'
 class TestCompletePath(unittest.TestCase): dependent on os, then it's not a unit test
-class TestFinalCSV(unittest.TestCase): dependent by the OS, not unit test
 """
 
 
