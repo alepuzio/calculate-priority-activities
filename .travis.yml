@@ -1,7 +1,8 @@
 language: python
+#python version
 python: 3.8.6 
+#define dependencsy
 install:
   - pip install -r requirements.txt
-  - pip install .
 # put testing framework
 script: pytest
