@@ -13,10 +13,9 @@ class PersonalLogging:
         TODO i read the file out the constructor and I will pass the result
         from https://stackoverflow.com/questions/53222413/python-configparser-raise-keyerror-key?rq=1
         """
-        #path = "/".join((os.path.abspath(__file__).replace("\\", "/")).split("/")[:-1])
-        #logging.config.fileConfig(os.path.join(path, "config.ini"), disable_existing_loggers=False)
-        #logging.config.fileConfig("config-log.ini", disable_existing_loggers=False)
-        logging.config.fileConfig ( "config-log.ini", disable_existing_loggers=False)
+        path = "/".join( ( os.path.abspath( __file__ ).replace( "\\", "/" ) ).split( "/" )[:-1])
+        logging.config.fileConfig( os.path.join ( path, "config-log.ini" ), disable_existing_loggers=False ) # working in local
+        #logging.config.fileConfig ( "config-log.ini", disable_existing_loggers=False) # working in local
         self.logger = logging.getLogger(__name__)
         
     def info(self, nameclass, method, msg):
