@@ -9,9 +9,9 @@ from personalLogging import PersonalLogging
 class GroupImportance:
     
     def __init__(self):
-        self.log = PersonalLogging()
+        pass
 
-    def rows(self, reader):
+    def rows(self, reader):#TODO maybe reuse another class
         """
         @return the importance data of the Activities
         """
@@ -44,7 +44,6 @@ class RowImportance:
 class ImportanceActivity:
     def __init__(self, new_importance):
         self.importance = new_importance#TODO decorator for default values
-        self.log = PersonalLogging()
 
     def importance(self):
         """

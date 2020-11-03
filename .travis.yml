@@ -1,2 +1,14 @@
 language: python
+#python version
 python: 3.8.6 
+#define dependencsy
+install:
+  - pip install -r requirements.txt
+# put testing framework
+script: pytest
+# allowed only these branch
+branches:
+  only:
+  - master
+  - develop
+  - join-travis
