@@ -27,6 +27,6 @@ class SourceCSV:
         else:
             raise Exception ("The file [{0}] is not present, I stop the elaboration ".format (  completePath.path()    )       )
         self.log.info( "SourceCSV", "file", "Elaborated file: {0}".format(  completePath.path() ) )
-        self.log.info( "SourceCSV", "file", "rows:\n{0}".format (str ( result ) ) ) 
+        self.log.debug( "SourceCSV", "file", "rows:\n{0}".format (str ( result ) ) ) 
         return result
 
