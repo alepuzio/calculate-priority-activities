@@ -36,7 +36,7 @@ class GroupPriority:
         for i in range ( len ( listImportance )  ) :
             date = self.listPriority.rows()[i]
             importance = listImportance[i]
-            self.log.warning ("GroupPriority", "union","date:{0}".format( str ( date ) ) ) 
+            self.log.debug ("GroupPriority", "union","date:{0}".format( str ( date ) ) ) 
             if date.action() == importance.activity():
                 result.append ( CSV ( Priority (  date  , importance) ) )
             else:

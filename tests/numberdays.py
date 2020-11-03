@@ -47,7 +47,7 @@ class NumberDays:
         """
         return the number of days between two dates : if the one and two parames are equals, the result is 1
         """
-        self.log.warning("NumberDays", "number", "{0}-{1}".format (one, two) ) 
+        self.log.debug("NumberDays", "number", "{0}-{1}".format (one, two) ) 
         return (two - one).days
 
     def activity ( self ) : 

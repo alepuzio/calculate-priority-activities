@@ -16,7 +16,7 @@ def testDaysOK ( temporalRange ):
     start = datetime.now().replace(year= 2010, month=5, day=10, hour=0, minute=0, second=0, microsecond=0)
     temporalRange = NumberDays ( "days-activity", start, end )
     numberDays = temporalRange.days()
-    expected = 3547
+    expected = 3546
     assert expected == numberDays
     
 def testRunningOK ( temporalRange ):
