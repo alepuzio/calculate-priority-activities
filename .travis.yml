@@ -10,5 +10,4 @@ script: pytest
 branches:
   only:
   - master
-  - develop
-  - join-travis
+#- develop
