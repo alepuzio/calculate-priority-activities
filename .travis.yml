@@ -10,4 +10,5 @@ script: pytest
 branches:
   only:
   - master
+  - develop
 #- develop
