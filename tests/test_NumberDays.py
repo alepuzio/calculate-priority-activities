@@ -8,15 +8,12 @@ import pytest
 from numberdays import NumberDays
 
 
-def testDaysOK ( temporalRange ):
+def testDaysMoreYearsOK ( temporalRange ):
     """
     test NumberDays.days(): number of days
     """
-    end = datetime.now().replace(year= 2030, month=7, day=20, hour=0, minute=0, second=0, microsecond=0)  
-    start = datetime.now().replace(year= 2010, month=5, day=10, hour=0, minute=0, second=0, microsecond=0)
-    temporalRange = NumberDays ( "days-activity", start, end )
     numberDays = temporalRange.days()
-    expected = 3546
+    expected = 3545
     assert expected == numberDays
     
 def testRunningOK ( temporalRange ):
