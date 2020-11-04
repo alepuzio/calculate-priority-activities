@@ -11,4 +11,4 @@ branches:
   only:
   - master
   - develop
-  - join-travis
+#- develop
