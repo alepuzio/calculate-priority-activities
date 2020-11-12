@@ -2,8 +2,8 @@
 """Module timeActivity
 Object about the management of the date
 """
-
-from personal_logging import PersonalLogging
+import pytest
+from src.personal_logging import PersonalLogging
 from datetime import date
 from datetime import datetime
 
@@ -58,35 +58,37 @@ class NumberDays:
     def __str__(self):
         return "NumberDays[{0}]-[{1}-{2}]".format ( self.name, self.start, self.end )
 
-
-class TestNumberDays(unittest.TestCase):
-
-    def test_number_same_day(self):
-        one = datetime(2020, 10, 30, 10, 24, 34, 198130)
-        two = datetime(2020, 10, 30, 10, 24, 34, 198130)
-        result = NumberDays("number", one, two).number(one, two)
-        expected = 0
-        self.assertEqual( result , expected)
+"""
+class TestNumberDays(:d
+        TestCase):
+"""
+def test_number_same_day():
+    one = datetime(2020, 10, 30, 10, 24, 34, 198130)
+    two = datetime(2020, 10, 30, 10, 24, 34, 198130)
+    result = NumberDays("number", one, two).number(one, two)
+    expected = 0
+    assert( result == expected)
     
-    def test_number_different_days(self):    
-        one = datetime(2020, 10, 29, 10, 24, 34, 198130)
-        two = datetime(2020, 10, 30, 10, 24, 34, 198130)
-        result = NumberDays("number", one, two).number(one, two)
-        expected = 1
-        self.assertEqual( result , expected)
-    
-    def test_days_running(self):
-        one = datetime(2020, 10, 29, 10, 24, 34, 198130)
-        two = datetime(2020, 10, 31, 10, 24, 34, 198130)
-        result = NumberDays("activity-running", one, two).days()
-        expected = 1
-        self.assertEqual( result , expected)
 
-    def test_days_future(self):
-        one = datetime(2023, 12, 2, 10, 24, 34, 198130)
-        two = datetime(2024, 10, 5, 10, 24, 34, 198130)
-        result = NumberDays( "activity-future", one, two ).days()
-        expected = 1128
-        self.assertEqual( result , expected)
+def est_number_different_days():    
+    one = datetime(2020, 10, 29, 10, 24, 34, 198130)
+    two = datetime(2020, 10, 30, 10, 24, 34, 198130)
+    result = NumberDays("number", one, two).number(one, two)
+    expected = 1
+    assert( result == expected)
+    
+def est_days_running():
+    one = datetime(2020, 10, 29, 10, 24, 34, 198130)
+    two = datetime(2020, 10, 31, 10, 24, 34, 198130)
+    result = NumberDays("activity-running", one, two).days()
+    expected = 1
+    assert( result == expected)
+
+def est_days_future():
+    one = datetime(2023, 12, 2, 10, 24, 34, 198130)
+    two = datetime(2024, 10, 5, 10, 24, 34, 198130)
+    result = NumberDays( "activity-future", one, two ).days()
+    expected = 1128
+    assert( result == expected)
 
 

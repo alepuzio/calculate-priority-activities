@@ -5,7 +5,7 @@ Object about the testing of the calculation of the number of days
 from datetime import date
 from datetime import datetime
 import pytest
-from numberdays import NumberDays
+from .numberdays import NumberDays
 
 
 def testDaysMoreYearsOK ( temporalRange ):

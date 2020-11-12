@@ -15,7 +15,7 @@ class PersonalLogging:
         from https://stackoverflow.com/questions/53222413/python-configparser-raise-keyerror-key?rq=1
         """
         path = "/".join( ( os.path.abspath( __file__ ).replace( "\\", "/" ) ).split( "/" )[:-1])
-        logging.config.fileConfig( os.path.join ( path, "config-log.ini" ), disable_existing_loggers=False ) # working in local
+        logging.config.fileConfig( os.path.join ( path, "..\\resources\\config-log.ini" ), disable_existing_loggers=False ) # working in local
         #logging.config.fileConfig ( "config-log.ini", disable_existing_loggers=False) # working in local
         self.logger = logging.getLogger(__name__)
         
