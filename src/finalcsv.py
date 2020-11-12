@@ -5,8 +5,8 @@ Object and method about the I/O operations
 
 import csv
 import os
-from personalLogging import PersonalLogging
-from completepath import CompletePath
+from .personal_logging import PersonalLogging
+from .completepath import CompletePath
 
 
 class FinalCSV:

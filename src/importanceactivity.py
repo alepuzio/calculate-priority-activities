@@ -3,8 +3,6 @@
 Object about the management of the data about the project and importance
 """
 
-import unittest
-
 class ImportanceActivity:
     
     def __init__(self, new_importance):

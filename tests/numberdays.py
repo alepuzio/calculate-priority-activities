@@ -3,10 +3,9 @@
 Object about the management of the date
 """
 
-from personalLogging import PersonalLogging
+from personal_logging import PersonalLogging
 from datetime import date
 from datetime import datetime
-import unittest
 
 
 class NumberDays:

@@ -2,13 +2,12 @@
 """Module priority
 Object about the management of the data about the project and priority
 """
-import unittest
 
-from running import Running
-from priority import Priority
+from .running import Running
+from .priority import Priority
 
-from mycsv import CSV
-from personalLogging import PersonalLogging
+from .mycsv import CSV
+from .personal_logging import PersonalLogging
 
 
 class GroupPriority:    

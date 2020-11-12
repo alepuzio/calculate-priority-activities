@@ -1,7 +1,7 @@
 import unittest
 from datetime import date
 from datetime import datetime
-from personalLogging import PersonalLogging
+from personal_logging import PersonalLogging
 from numberdays import NumberDays
 
 class State:

@@ -4,7 +4,7 @@ Object about the management of the data about the project and time
 """
 from datetime import date
 from datetime import datetime
-from personalLogging import PersonalLogging
+from .personal_logging import PersonalLogging
 import unittest
 
 class CSVTime:

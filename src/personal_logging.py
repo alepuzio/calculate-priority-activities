@@ -5,6 +5,7 @@ Personal wrapping per logging
 import logging
 import logging.config
 import os
+
 class PersonalLogging:
 
     def __init__(self):
