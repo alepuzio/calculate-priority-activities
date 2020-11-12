@@ -32,7 +32,7 @@ In detail:
 
 - Python 3.0+
 - pip
-- unittest 
+- pytest 
 
 ### Installing
 
