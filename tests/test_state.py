@@ -2,7 +2,7 @@ import unittest
 from datetime import date
 from datetime import datetime
 from src.personal_logging import PersonalLogging
-from tests.numberdays import NumberDays
+from tests.test_number_days import NumberDays
 
 class State:
 
