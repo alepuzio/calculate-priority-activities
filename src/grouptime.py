@@ -11,8 +11,8 @@ from .running import Running
 from .dayactivity import DayActivity
 from datetime import date
 from datetime import datetime
-from .state import State
-from tests.test_numberdays import NumberDays
+from tests.test_state import State
+from tests.test_number_days import NumberDays
 
 
 

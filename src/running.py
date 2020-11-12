@@ -3,13 +3,12 @@
 Object about the management of the date
 """
 
-from personalLogging import PersonalLogging
-from csvtime import CSVTime
-from rowtime import RowTime
+from .personal_logging import PersonalLogging
+from .csvtime import CSVTime
+from .rowtime import RowTime
 from datetime import date
 from datetime import datetime
-from numberdays import NumberDays
-import unittest
+from tests.test_number_days import NumberDays
 
 
 class TimeActivity:

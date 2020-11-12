@@ -2,7 +2,7 @@
 """Module priority
 Object about the management of the data about the project and priority
 """
-from running import Running
+from .running import Running
 
 
 class Priority:

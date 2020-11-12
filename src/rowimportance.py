@@ -3,8 +3,7 @@
 Object about the management of the data about the project and importance
 """
 
-import unittest
-from personalLogging import PersonalLogging
+from .personal_logging import PersonalLogging
 
 class GroupImportance:
     
