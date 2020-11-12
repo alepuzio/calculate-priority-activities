@@ -4,8 +4,11 @@ python: 3.8.6
 #define dependencsy
 install:
   - pip install -r requirements.txt
-# put testing framework
-script: pytest
+# give authorizations to the script for Travis 
+before-script: 
+  - chmod +x ./scripts/unit_testing.sh
+# tests
+script: ./scripts/unit_testing.sh
 # allowed only these branch
 branches:
   only:
