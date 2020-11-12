@@ -5,8 +5,7 @@ Object about the management of the data about the project and priority
 
 from .running import Running
 from .priority import Priority
-
-from .mycsv import CSV
+from .my_csv import CSV
 from .personal_logging import PersonalLogging
 
 

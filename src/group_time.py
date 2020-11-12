@@ -4,11 +4,11 @@ Object about the management of the date
 """
 
 from .personal_logging import PersonalLogging
-from .csvtime import CSVTime
-from .rowtime import RowTime
+from .csv_time import CSVTime
+from .row_time import RowTime
 from .running import Late
 from .running import Running
-from .dayactivity import DayActivity
+from .day_activity import DayActivity
 from datetime import date
 from datetime import datetime
 from tests.test_state import State

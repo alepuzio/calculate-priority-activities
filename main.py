@@ -3,13 +3,13 @@
 @overview entry point of the application
 """
 
-from src.groupimportance import GroupImportance
-from src.grouptime import GroupTime
-from src.groupactivity import GroupActivity
-from src.grouppriority import GroupPriority
+from src.group_importance import GroupImportance
+from src.group_time import GroupTime
+from src.group_activity import GroupActivity
+from src.group_priority import GroupPriority
 
-from src.finalcsv import FinalCSV
-from src.sourcecsv import SourceCSV 
+from src.final_csv import FinalCSV
+from src.source_csv import SourceCSV 
 
 
 if __name__ == '__main__':

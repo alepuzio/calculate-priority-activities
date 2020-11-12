@@ -5,7 +5,6 @@ Object about the management of the data about the project and time
 from datetime import date
 from datetime import datetime
 from .personal_logging import PersonalLogging
-import unittest
 
 class CSVTime:
     """@overview: this class contains the single row of time file"""

@@ -3,7 +3,6 @@
 Object about the management of the data about the project and priority
 """
 
-
 class CSV:
 
     def __init__(self, newPriority):

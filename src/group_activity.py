@@ -7,7 +7,6 @@ from datetime import datetime
 from .personal_logging import PersonalLogging
 
 
-
 class GroupActivity:
     def __init__(self, newReadRows):
         self.readRows = newReadRows
