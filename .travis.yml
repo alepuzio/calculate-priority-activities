@@ -1,17 +1,23 @@
+os: linux
+dist: xenial
+
+# python
 language: python
-#python version
 python: 3.8.6 
-#define dependencsy
+
+# define dependencsy
 install:
   - pip install -r requirements.txt
+
 # give authorizations to the script for Travis 
-before-script: 
+before_script: 
   - chmod +x ./scripts/unit_testing.sh
+
 # tests
 script: ./scripts/unit_testing.sh
+
 # allowed only these branch
 branches:
   only:
   - master
   - develop
-#- develop
