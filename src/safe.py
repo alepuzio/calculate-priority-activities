@@ -5,7 +5,6 @@ Object and method about the I/O operations
 
 import csv
 import os
-
  
 class Safe:
     def __init__(self, newFinalCSV):

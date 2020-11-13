@@ -7,7 +7,8 @@ import csv
 import os
 
 
-class CompletePath:#TODO create decorator cache
+class CompletePath:
+    #TODO create decorator cache
     def __init__(self, new_partialPath, new_filename):
         self.filename = new_filename
         self.partialPath = new_partialPath

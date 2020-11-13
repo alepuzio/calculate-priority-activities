@@ -3,8 +3,7 @@
 Object about the management of the data about the project and importance
 """
 
-import unittest
-from rowimportance import RowImportance
+from .row_importance import RowImportance
 
 
 class GroupImportance:

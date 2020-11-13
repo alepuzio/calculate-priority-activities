@@ -2,8 +2,6 @@
 """Module priority
 Object about the management of the data about the project and priority
 """
-import unittest
-
 
 class CSV:
 

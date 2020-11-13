@@ -5,8 +5,8 @@ Object and method about the I/O operations
 
 import csv
 import os
-from personalLogging import PersonalLogging
-from completepath import CompletePath
+from .personal_logging import PersonalLogging
+from .complete_path import CompletePath
 
 class SourceCSV:
     def __init__(self, newPath, newFilename, newGroupTime):

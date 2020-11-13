@@ -11,15 +11,15 @@ In detail:
 
 ## Feature
 
-* The input files can have a different order of the activities each other (now the order has to be the same, otherwise an Exception will be run)
-* The final list can be separated in "activities already started" (start date minor than today) and "future activities" (start date major than today)
-* The final list can be separated by the area of interest of the project (Area of responsability in GTD meaning)
+* [] The input files can have a different order of the activities each other (now the order has to be the same, otherwise an Exception will be run)
+* [] The final list can be separated in "activities already started" (start date minor than today) and "future activities" (start date major than today)
+* [] The final list can be separated by the area of interest of the project (Area of responsability in GTD meaning)
 
 ## Bug
 
-* Fix the unit test
-* Resolve the TODO in the code
-* Organize the structure following the guidelines in [The Hitchhiker's Guide to Python!](https://docs.python-guide.org/)
+* [X] Fix the unit test
+* [] Resolve the TODO in the code
+* []  Organize the structure following the guidelines in [The Hitchhiker's Guide to Python!](https://docs.python-guide.org/)
 
 ## Status CI Integration
  
@@ -32,7 +32,7 @@ In detail:
 
 - Python 3.0+
 - pip
-- unittest 
+- pytest 
 
 ### Installing
 

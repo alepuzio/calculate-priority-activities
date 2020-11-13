@@ -2,8 +2,7 @@
 """Module priority
 Object about the management of the data about the project and priority
 """
-import unittest
-from running import Running
+from .running import Running
 
 
 class Priority:
@@ -28,12 +27,15 @@ class Priority:
     
     def __repr__(self):
         return "Priority[{0}]-[{1}]".format(self.name() , str (  self.importance.importance() ) )
-        
-class TestPriority(unittest.TestCase):
+
+
+"""
+TODO rewrite test
+class RewriteTestPriority(unittest.TestCase):
 
     def test_points(self):
         priority = Priority( TimeActivity ( date ), importance) 
         result = priority.points()
         expected = 10
         self.assertEqual(result, expected)
-
+"""
