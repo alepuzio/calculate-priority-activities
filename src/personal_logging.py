@@ -13,6 +13,7 @@ class PersonalLogging:
         It's not polite, but in the constructor I read the file
         TODO i read the file out the constructor and I will pass the result
         from https://stackoverflow.com/questions/53222413/python-configparser-raise-keyerror-key?rq=1
+        TODO create decorator with different operation of the logger
         """
         #path = "/".join( ( os.path.abspath( __file__ ).replace( "\\", "/" ) ).split( "/" )[:-1])
         #logging.config.fileConfig( os.path.join ( path, "..\\resources\\config-log.ini" ), disable_existing_loggers=False ) # working in local
@@ -26,7 +27,7 @@ class PersonalLogging:
         #fh.setFormatter(formatter)
         ch.setFormatter(formatter)
         # add the handlers to the logger
-        logger.addHandler(ch)
+        self.logger.addHandler(ch)
         # TODO decorator it doesnt create file handler which logs even debug messages
         # fh = logging.FileHandler('spam.log')
         # fh.setLevel(logging.DEBUG)
